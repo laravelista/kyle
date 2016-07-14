@@ -20,6 +20,12 @@
                             {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) }}
                         </div>
 
+                        <div class="checkbox">
+                            <label>
+                                {{ Form::checkbox('active', '1') }} Active
+                            </label>
+                        </div>
+
                         <div class="form-group">
                             {{ Form::label('note', 'Note') }}
                             {{ Form::textarea('note', null, ['class' => 'form-control', 'placeholder' => 'Note']) }}

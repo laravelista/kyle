@@ -30,3 +30,5 @@ Clients have:
 - street
 - city
 - postal code
+
+> At the start of every year, create new service occurances.

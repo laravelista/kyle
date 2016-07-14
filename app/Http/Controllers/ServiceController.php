@@ -6,6 +6,8 @@ use App\Client;
 use App\Service;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Events\ServiceWasCreated;
+use App\Events\ServiceWasUpdated;
 
 class ServiceController extends Controller
 {
@@ -70,6 +72,8 @@ class ServiceController extends Controller
         $service->client()->associate($client);
         $service->save();
 
+        event(new ServiceWasCreated($service));
+
         flash()->success('Service created!');
 
         return redirect()->route('services.index');
@@ -128,6 +132,8 @@ class ServiceController extends Controller
 
         $client = Client::find($request->get('client_id'));
         $service->client()->associate($client);
+
+        event(new ServiceWasUpdated($service));
 
         flash()->success('Service Updated!');
 

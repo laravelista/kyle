@@ -16,7 +16,7 @@
 
                 <div class="panel-body">
 
-                    <div class="responsive">
+                    <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <th>Title</th>
@@ -28,7 +28,7 @@
                             </tr>
 
                             @foreach($services as $service)
-                                <tr>
+                                <tr class="@if($service->active) success @endif">
                                     <td>{{ $service->title }}</td>
                                     <td>{{ $service->note }}</td>
                                     <td>{{ $service->day }}.{{ $service->month }}</td>

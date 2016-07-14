@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateServiceLogsTable extends Migration
+class CreateOccurrencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateServiceLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('service_logs', function (Blueprint $table) {
+        Schema::create('occurrences', function (Blueprint $table) {
             $table->timestamp('occurs_at');
             $table->boolean('offer_sent')->nullable();
             $table->boolean('payment_received')->nullable();
@@ -31,6 +31,6 @@ class CreateServiceLogsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('service_logs');
+        Schema::drop('occurrences');
     }
 }

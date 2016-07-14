@@ -16,7 +16,7 @@
 
                 <div class="panel-body">
 
-                    <div class="responsive">
+                    <div class="table-responsive">
                         <table class="table">
                             <tr>
                                 <th>Name</th>
