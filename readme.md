@@ -1,9 +1,12 @@
 # Kyle
 
-**Monitor when to bill clients based on the services they use.**
+[![Latest Stable Version](https://poser.pugx.org/laravelista/kyle/version?format=flat-square)](https://packagist.org/packages/laravelista/kyle)
+[![Total Downloads](https://poser.pugx.org/laravelista/kyle/downloads?format=flat-square)](https://packagist.org/packages/laravelista/kyle)
+[![License](https://poser.pugx.org/laravelista/kyle/license?format=flat-square)](https://packagist.org/packages/laravelista/kyle)
 
-- Never forget to bill a client for the services he uses
-- Built on Laravel 5.2
+Kyle is a web application for web developers and small companies to efficiently track and stay on top of future expenses related to web development. We believe that having a calendar with reoccurring meetings or relying on email notifications from service providers is not a trustworthy source of information to bill clients for the services they use. 
+
+Kyle attempts to provide you with a clear and simple way to see which client uses which services and when those service need to be billed. The idea behind Kyle is very simple "Never forget to bill a client for the services that he uses". You can keep track of things like: is the offer sent, did you receive payment and did you send the receipt.
 
 ## Installation
 
