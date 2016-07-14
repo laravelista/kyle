@@ -3,7 +3,7 @@
 namespace App;
 
 use App\Client;
-use App\Occurance;
+use App\Occurrence;
 use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
@@ -25,8 +25,8 @@ class Service extends Model
      *
      * @return [type]
      */
-    public function occurances()
+    public function occurrences()
     {
-        return $this->hasMany(Occurance::class);
+        return $this->hasMany(Occurrence::class);
     }
 }

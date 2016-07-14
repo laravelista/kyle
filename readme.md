@@ -31,4 +31,4 @@ Clients have:
 - city
 - postal code
 
-> At the start of every year, create new service occurances.
+> At the start of every year, create new service occurrences using task scheduler
