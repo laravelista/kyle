@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('meta_title', 'Overview')
+
 @section('content')
 <div class="container">
     <div class="row">

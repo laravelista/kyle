@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>@yield('meta_title') | Kyle</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css" integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
@@ -40,14 +40,30 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Laravel
+                    Kyle
                 </a>
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
+                    <li class="{{ Ekko::isActiveUrl('/') }}">
+                        <a href="{{ url('/') }}">
+                            <i class="fa fa-fw fa-bullseye"></i> Overview
+                        </a>
+                    </li>
+                    @if(Auth::check())
+                    <li class="{{ Ekko::isActiveRoute('services.*') }}">
+                        <a href="{{ route('services.index') }}">
+                            <i class="fa fa-fw fa-ship"></i> Services
+                        </a>
+                    </li>
+                    <li class="{{ Ekko::isActiveRoute('clients.*') }}">
+                        <a href="{{ route('clients.index') }}">
+                            <i class="fa fa-fw fa-users"></i> Clients
+                        </a>
+                    </li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->

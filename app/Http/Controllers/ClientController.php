@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
+use App\Client;
 use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
@@ -15,7 +15,9 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::orderBy('name')->get();
+
+        return view('clients.index')->with(compact('clients'));
     }
 
     /**
@@ -25,7 +27,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.create');
     }
 
     /**
@@ -36,18 +38,25 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'oib' => 'required|size:11|unique:clients',
+            'street' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'postal_code' => 'required|integer',
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        $client = Client::create([
+            'name' => $request->get('name'),
+            'oib' => $request->get('oib'),
+            'street' => $request->get('street'),
+            'city' => $request->get('city'),
+            'postal_code' => $request->get('postal_code'),
+        ]);
+
+        flash()->success('Client created!');
+
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -58,7 +67,9 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        //
+        $client = Client::findOrFail($id);
+
+        return view('clients.edit')->with(compact('client'));
     }
 
     /**
@@ -70,7 +81,27 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Client::findOrFail($id);
+
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'oib' => 'required|size:11|unique:clients,oib' . $client->id,
+            'street' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'postal_code' => 'required|integer',
+        ]);
+
+        $client->update([
+            'name' => $request->get('name'),
+            'oib' => $request->get('oib'),
+            'street' => $request->get('street'),
+            'city' => $request->get('city'),
+            'postal_code' => $request->get('postal_code'),
+        ]);
+
+        flash()->success('Client Updated!');
+
+        return redirect()->route('clients.edit', $client->id);
     }
 
     /**
@@ -81,6 +112,11 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $client->delete();
+
+        flash()->success('Client Deleted!');
+
+        return redirect()->route('clients.index');
     }
 }
