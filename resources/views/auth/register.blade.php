@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('meta_title', 'Register')
+
 @section('content')
 <div class="container">
     <div class="row">

@@ -1,34 +1,17 @@
 # Kyle
 
-**Monitor when to bill clients based on their services employed.**
+**Monitor when to bill clients based on the services they use.**
 
-The main point of interest here are "events".
+## Create new user
 
-Services have:
+To create a new user use this command:
 
-- title
-- note
-- month ( 1-12 ) - which month this expense happens
-- day ( 1-31 ) - which day this expense happens
-- cost
-- currency (HRK, USD, EUR)
-- client_id
-- active
+```
+php artisan user:create "John Doe" john@doe.com
+```
 
-ServiceLog have:
+You will be asked for the password.
 
-- service_id
-- occurs_at (exact date of the event)
-- offer_sent
-- payment_received
-- receipt_sent
+## Info
 
-Clients have:
-
-- name
-- oib
-- street
-- city
-- postal code
-
-> At the start of every year, create new service occurrences using task scheduler
+At the start of every year 1st of January a command `occurrences:spawn` is executed using the task scheduler. **Be sure to add Cron entry `* * * * * php /path/to/artisan schedule:run >> /dev/null 2>&1` to your server.** This command creates new occurrences for services that will occur in the new year.
