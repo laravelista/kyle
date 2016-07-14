@@ -1,6 +1,6 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
+    "name": "laravelista/kyle",
+    "description": "Monitor when to bill clients based on the services they use.",
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
