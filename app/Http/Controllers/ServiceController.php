@@ -18,7 +18,7 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::orderBy('title')->with(['client'])->get();
+        $services = Service::orderBy('month')->orderBy('day')->with(['client'])->get();
 
         return view('services.index')->with(compact('services'));
     }

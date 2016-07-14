@@ -19,21 +19,23 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tr>
-                                <th>Title</th>
-                                <th>Note</th>
                                 <th>Repeats on</th>
-                                <th>Cost</th>
+                                <th>Title</th>
                                 <th>Client</th>
+                                <th>Active</th>
+                                <th>Note</th>
+                                <th>Cost</th>
                                 <th></th>
                             </tr>
 
                             @foreach($services as $service)
-                                <tr class="@if($service->active) success @endif">
-                                    <td>{{ $service->title }}</td>
-                                    <td>{{ $service->note }}</td>
+                                <tr>
                                     <td>{{ $service->day }}.{{ $service->month }}</td>
-                                    <td>{{ $service->cost }} {{ $service->currency }}</td>
+                                    <td>{{ $service->title }}</td>
                                     <td>{{ $service->client->name }}</td>
+                                    <td>{{ $service->active }}</td>
+                                    <td>{{ $service->note }}</td>
+                                    <td>{{ $service->cost }} {{ $service->currency }}</td>
                                     <td>
                                         {{ Form::open(['route' => ['services.destroy', $service->id], 'method' => 'DELETE', 'class' => 'confirm']) }}
                                             <a href="{{ route('services.edit', $service->id) }}" class="btn btn-xs btn-default">
