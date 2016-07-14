@@ -132,6 +132,7 @@ class ServiceController extends Controller
 
         $client = Client::find($request->get('client_id'));
         $service->client()->associate($client);
+        $service->save();
 
         event(new ServiceWasUpdated($service));
 

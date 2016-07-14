@@ -7,6 +7,10 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "laravel-elixir": "^5.0.0",
-    "bootstrap-sass": "^3.3.0"
+    "bootbox": "^4.4.0",
+    "bootstrap": "^3.3.6",
+    "bootstrap-less": "^3.3.8",
+    "font-awesome": "^4.6.3",
+    "jquery": "^3.1.0"
   }
 }
