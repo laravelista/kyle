@@ -13454,6 +13454,25 @@ $('.confirm').on("submit", function (e) {
     });
 });
 
+//var api_token = window.api_token || {};
+
+$('#currency').on('change', function () {
+
+    var currency = $(this).val();
+
+    $.ajax('/api/v1/quote', {
+        data: {
+            currency: currency,
+            api_token: api_token
+        },
+        method: 'GET',
+        success: function success(data) {
+            data = data.replace('.', ',');
+            $('#exchange_rate').val(data);
+        }
+    });
+});
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"bootbox":1,"bootstrap":2,"jquery":15}]},{},[16]);
 

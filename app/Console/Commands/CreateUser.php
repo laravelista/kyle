@@ -62,6 +62,7 @@ class CreateUser extends Command
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'api_token' => bin2hex(openssl_random_pseudo_bytes(16))
         ]);
 
         $this->info('User has been created.');

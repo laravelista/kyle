@@ -53,8 +53,9 @@ class ServiceController extends Controller
             'note' => 'string',
             'month' => 'required|integer|min:1|max:12',
             'day' => 'required|integer|min:1|max:31',
-            'cost' => 'required|integer|min:0',
+            'cost' => 'required|regex:/([0-9],)+[0-9]{2,}/|min:0',
             'currency' => 'required|in:hrk,usd,eur',
+            'exchange_rate' => 'required|regex:/([0-9],)+[0-9]{2,}/|min:0',
             'active' => 'boolean',
             'client_id' => 'required|exists:clients,id'
         ]);
@@ -66,8 +67,9 @@ class ServiceController extends Controller
         $service->note = $request->get('note');
         $service->month = $request->get('month');
         $service->day = $request->get('day');
-        $service->cost = $request->get('cost');
+        $service->cost = convert_integer($request->get('cost'));
         $service->currency = $request->get('currency');
+        $service->exchange_rate = str_replace(',', '.', $request->get('exchange_rate'));
         $service->active = $request->get('active', false);
         $service->client()->associate($client);
         $service->save();
@@ -114,8 +116,9 @@ class ServiceController extends Controller
             'note' => 'string',
             'month' => 'required|integer|min:1|max:12',
             'day' => 'required|integer|min:1|max:31',
-            'cost' => 'required|integer|min:0',
+            'cost' => 'required|regex:/([0-9],)+[0-9]{2,}/|min:0',
             'currency' => 'required|in:hrk,usd,eur',
+            'exchange_rate' => 'required|regex:/([0-9],)+[0-9]{2,}/|min:0',
             'active' => 'boolean',
             'client_id' => 'required|exists:clients,id'
         ]);
@@ -125,8 +128,9 @@ class ServiceController extends Controller
             'note' => $request->get('note'),
             'month' => $request->get('month'),
             'day' => $request->get('day'),
-            'cost' => $request->get('cost'),
+            'cost' => convert_integer($request->get('cost')),
             'currency' => $request->get('currency'),
+            'exchange_rate' => str_replace(',', '.', $request->get('exchange_rate')),
             'active' => $request->get('active', false),
         ]);
 

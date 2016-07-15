@@ -161,6 +161,7 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laravelista\Ekko\EkkoServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Florianv\LaravelSwap\SwapServiceProvider::class
 
 
     ],
@@ -210,7 +211,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Form' => Collective\Html\FormFacade::class,
-        'Ekko' => Laravelista\Ekko\Facades\Ekko::class
+        'Ekko' => Laravelista\Ekko\Facades\Ekko::class,
+        'Swap' => Florianv\LaravelSwap\Facades\Swap::class
 
     ],
 

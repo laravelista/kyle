@@ -79,6 +79,12 @@
 
     @yield('content')
 
+    @if (Auth::check())
+    <script>
+        var api_token = "{{ Auth::user()->api_token }}";
+    </script>
+    @endif
+
     <script src="{{ elixir('js/app.js') }}"></script>
 </body>
 </html>

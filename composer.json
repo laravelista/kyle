@@ -4,12 +4,23 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "support": {
+        "issues": "https://github.com/laravelista/kyle/issues",
+        "source": "https://github.com/laravelista/kyle"
+    },
+    "authors": [
+        {
+            "name": "Mario Bašić",
+            "email": "mario.basic@outlook.com"
+        }
+    ],
     "require": {
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "^5.2",
         "laravelista/ekko": "^1.2",
-        "laracasts/flash": "^2.0"
+        "laracasts/flash": "^2.0",
+        "florianv/laravel-swap": "^0.4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -24,7 +35,10 @@
         ],
         "psr-4": {
             "App\\": "app/"
-        }
+        },
+        "files": [
+            "app/helpers.php"
+        ]
     },
     "autoload-dev": {
         "classmap": [

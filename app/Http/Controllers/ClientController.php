@@ -40,15 +40,15 @@ class ClientController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:255',
-            'oib' => 'required|size:11|unique:clients',
-            'street' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'postal_code' => 'required|integer',
+            'tax_number' => 'required|max:255|unique:clients',
+            'street' => 'string|max:255',
+            'city' => 'string|max:255',
+            'postal_code' => 'integer',
         ]);
 
         $client = Client::create([
             'name' => $request->get('name'),
-            'oib' => $request->get('oib'),
+            'tax_number' => $request->get('tax_number'),
             'street' => $request->get('street'),
             'city' => $request->get('city'),
             'postal_code' => $request->get('postal_code'),
@@ -85,15 +85,15 @@ class ClientController extends Controller
 
         $this->validate($request, [
             'name' => 'required|max:255',
-            'oib' => 'required|size:11|unique:clients,oib' . $client->id,
-            'street' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'postal_code' => 'required|integer',
+            'tax_number' => 'required|max:255|unique:clients,tax_number,' . $client->id,
+            'street' => 'string|max:255',
+            'city' => 'string|max:255',
+            'postal_code' => 'integer',
         ]);
 
         $client->update([
             'name' => $request->get('name'),
-            'oib' => $request->get('oib'),
+            'tax_number' => $request->get('tax_number'),
             'street' => $request->get('street'),
             'city' => $request->get('city'),
             'postal_code' => $request->get('postal_code'),
