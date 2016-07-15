@@ -27,6 +27,22 @@ class HomeController extends Controller
             $query->where('active', 1);
         })->with(['service.client'])->get();
 
-        return view('home')->with(compact('occurrences'));
+        if($currentMonth + 1 <= 12){
+            $upcomingOccurrences = Occurrence::orderBy('occurs_at')
+            // Where occurs_at month and year is the same as current month and year
+            ->where(function($query) use($currentMonth, $currentYear) {
+                $query->where('occurs_at', 'like', $currentYear . '-' . ++$currentMonth . '-%');
+            })
+            // Return only occurrences that belong to services that are active
+            ->whereHas('service', function($query) {
+                $query->where('active', 1);
+            })->with(['service.client'])->get();
+        }
+        else {
+            $upcomingOccurrences = [];
+        }
+
+
+        return view('home')->with(compact('occurrences', 'upcomingOccurrences'));
     }
 }

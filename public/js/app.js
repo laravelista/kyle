@@ -13467,7 +13467,6 @@ $('#currency').on('change', function () {
         },
         method: 'GET',
         success: function success(data) {
-            data = data.replace('.', ',');
             $('#exchange_rate').val(data);
         }
     });

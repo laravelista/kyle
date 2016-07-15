@@ -55,7 +55,7 @@ class ServiceController extends Controller
             'day' => 'required|integer|min:1|max:31',
             'cost' => 'required|regex:/([0-9],)+[0-9]{2,}/|min:0',
             'currency' => 'required|in:hrk,usd,eur',
-            'exchange_rate' => 'required|regex:/([0-9],)+[0-9]{2,}/|min:0',
+            'exchange_rate' => 'required|numeric|min:0',
             'active' => 'boolean',
             'client_id' => 'required|exists:clients,id'
         ]);
@@ -69,7 +69,7 @@ class ServiceController extends Controller
         $service->day = $request->get('day');
         $service->cost = convert_integer($request->get('cost'));
         $service->currency = $request->get('currency');
-        $service->exchange_rate = str_replace(',', '.', $request->get('exchange_rate'));
+        $service->exchange_rate = $request->get('exchange_rate');
         $service->active = $request->get('active', false);
         $service->client()->associate($client);
         $service->save();
@@ -118,7 +118,7 @@ class ServiceController extends Controller
             'day' => 'required|integer|min:1|max:31',
             'cost' => 'required|regex:/([0-9],)+[0-9]{2,}/|min:0',
             'currency' => 'required|in:hrk,usd,eur',
-            'exchange_rate' => 'required|regex:/([0-9],)+[0-9]{2,}/|min:0',
+            'exchange_rate' => 'required|numeric|min:0',
             'active' => 'boolean',
             'client_id' => 'required|exists:clients,id'
         ]);
@@ -130,7 +130,7 @@ class ServiceController extends Controller
             'day' => $request->get('day'),
             'cost' => convert_integer($request->get('cost')),
             'currency' => $request->get('currency'),
-            'exchange_rate' => str_replace(',', '.', $request->get('exchange_rate')),
+            'exchange_rate' => $request->get('exchange_rate'),
             'active' => $request->get('active', false),
         ]);
 
