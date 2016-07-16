@@ -46,18 +46,6 @@ class Service extends Model
     }
 
     /**
-     * Converts 112345 to 1.123,45.
-     * For forms only.
-     *
-     * @param  integer $value
-     * @return string
-     */
-    public function formExchangeRateAttribute($value)
-    {
-        return number_format($this->exchange_rate , 4, ',', '.');
-    }
-
-    /**
      * Returns formatted cost with currency.
      * Converts `112345 usd` to `1.123,45 USD`.
      *
