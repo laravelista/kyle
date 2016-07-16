@@ -103,9 +103,21 @@
                             <td>{{ $occurrence->service->title }}</td>
                             <td>{{ $occurrence->service->client->name }}</td>
                             <td>{{ $occurrence->service->formatted_cost }}</td>
-                            <td>{{ $occurrence->offer_sent }}</td>
-                            <td>{{ $occurrence->payment_received }}</td>
-                            <td>{{ $occurrence->receipt_sent }}</td>
+                            <td class="kyle-change-boolean"
+                                data-url="/api/v1/occurrences/{{ $occurrence->id }}/offer"
+                                data-state="{{ $occurrence->getFutureOfferState() }}">
+                                {{ $occurrence->offer_sent }}
+                            </td>
+                            <td class="kyle-change-boolean"
+                                data-url="/api/v1/occurrences/{{ $occurrence->id }}/payment"
+                                data-state="{{ $occurrence->getFuturePaymentState() }}">
+                                {{ $occurrence->payment_received }}
+                            </td>
+                            <td class="kyle-change-boolean"
+                                data-url="/api/v1/occurrences/{{ $occurrence->id }}/receipt"
+                                data-state="{{ $occurrence->getFutureReceiptState() }}">
+                                {{ $occurrence->receipt_sent }}
+                            </td>
                         </tr>
                     @endforeach
                 </table>
