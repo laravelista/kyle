@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Client;
+use App\Category;
 use App\Occurrence;
 use Illuminate\Database\Eloquent\Model;
 use Collective\Html\Eloquent\FormAccessible;
@@ -21,6 +22,16 @@ class Service extends Model
     public function client()
     {
         return $this->belongsTo(Client::class);
+    }
+
+    /**
+     * To which category does this service belong.
+     *
+     * @return [type]
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     /**

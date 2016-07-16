@@ -8,6 +8,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Events\ServiceWasCreated;
 use App\Events\ServiceWasUpdated;
+use App\Category;
 
 class ServiceController extends Controller
 {
@@ -18,7 +19,10 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        $services = Service::orderBy('month')->orderBy('day')->with(['client'])->get();
+        $services = Service::orderBy('month')
+            ->orderBy('day')
+            ->with(['client', 'category'])
+            ->get();
 
         return view('services.index')->with(compact('services'));
     }
@@ -36,8 +40,9 @@ class ServiceController extends Controller
             'eur' => 'EUR',
         ];
         $clients = Client::orderBy('name')->pluck('name', 'id')->toArray();
+        $categories = Category::orderBy('name')->pluck('name', 'id')->toArray();
 
-        return view('services.create')->with(compact('currencies', 'clients'));
+        return view('services.create')->with(compact('currencies', 'clients', 'categories'));
     }
 
     /**
@@ -57,10 +62,12 @@ class ServiceController extends Controller
             'currency' => 'required|in:hrk,usd,eur',
             'exchange_rate' => 'required|numeric|min:0',
             'active' => 'boolean',
-            'client_id' => 'required|exists:clients,id'
+            'client_id' => 'required|exists:clients,id',
+            'category_id' => 'required|exists:categories,id'
         ]);
 
         $client = Client::find($request->get('client_id'));
+        $category = Category::find($request->get('category_id'));
 
         $service = new Service;
         $service->title = $request->get('title');
@@ -72,6 +79,7 @@ class ServiceController extends Controller
         $service->exchange_rate = $request->get('exchange_rate');
         $service->active = $request->get('active', false);
         $service->client()->associate($client);
+        $service->category()->associate($category);
         $service->save();
 
         event(new ServiceWasCreated($service));
@@ -96,8 +104,9 @@ class ServiceController extends Controller
             'eur' => 'EUR',
         ];
         $clients = Client::orderBy('name')->pluck('name', 'id')->toArray();
+        $categories = Category::orderBy('name')->pluck('name', 'id')->toArray();
 
-        return view('services.edit')->with(compact('service', 'currencies', 'clients'));
+        return view('services.edit')->with(compact('service', 'currencies', 'clients', 'categories'));
     }
 
     /**
@@ -120,7 +129,8 @@ class ServiceController extends Controller
             'currency' => 'required|in:hrk,usd,eur',
             'exchange_rate' => 'required|numeric|min:0',
             'active' => 'boolean',
-            'client_id' => 'required|exists:clients,id'
+            'client_id' => 'required|exists:clients,id',
+            'category_id' => 'required|exists:categories,id'
         ]);
 
         $service->update([
@@ -136,6 +146,8 @@ class ServiceController extends Controller
 
         $client = Client::find($request->get('client_id'));
         $service->client()->associate($client);
+        $category = Category::find($request->get('category_id'));
+        $service->category()->associate($category);
         $service->save();
 
         event(new ServiceWasUpdated($service));

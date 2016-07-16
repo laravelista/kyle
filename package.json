@@ -11,6 +11,7 @@
     "bootstrap": "^3.3.6",
     "bootstrap-less": "^3.3.8",
     "font-awesome": "^4.6.3",
-    "jquery": "^3.1.0"
+    "jquery": "^3.1.0",
+    "selectize": "^0.12.2"
   }
 }

@@ -24,6 +24,14 @@
                     {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Title']) }}
                 </div>
 
+                <div class="form-group">
+                    {{ Form::label('category_id', 'Category') }}
+                    {{ Form::select('category_id', $categories, null, [
+                        'class' => 'form-control',
+                        'placeholder' => 'Select a category'
+                    ]) }}
+                </div>
+
                 <div class="checkbox">
                     <label>
                         {{ Form::checkbox('active', '1') }} Active

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Occurrence;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Service;
+use App\Client;
+use App\Category;
 
 class HomeController extends Controller
 {
@@ -48,5 +51,34 @@ class HomeController extends Controller
 
 
         return view('home')->with(compact('occurrences', 'upcomingOccurrences'));
+    }
+
+    public function report()
+    {
+        $services = Service::orderBy('month')
+            ->orderBy('day')
+            ->where('active', 1)
+            ->with(['client', 'category'])
+            ->get();
+
+        $clients = Client::orderBy('name')
+            ->whereHas('services', function($query) {
+                $query->where('active', 1);
+            })
+            ->with(['services' => function($query) {
+                $query->where('active', 1);
+            }])
+            ->get();
+
+        $categories = Category::orderBy('name')
+            ->whereHas('services', function($query) {
+                $query->where('active', 1);
+            })
+            ->with(['services' => function($query) {
+                $query->where('active', 1);
+            }])
+            ->get();
+
+        return view('report')->with(compact('services', 'clients', 'categories'));
     }
 }

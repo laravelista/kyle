@@ -14,7 +14,11 @@
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
 
+    Route::get('report', 'HomeController@report');
+
     Route::resource('clients', 'ClientController');
+
+    Route::resource('categories', 'CategoryController');
 
     Route::resource('services', 'ServiceController');
 });

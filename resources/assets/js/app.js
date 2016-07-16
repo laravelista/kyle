@@ -4,6 +4,7 @@ require('bootstrap');
 
 var $ = require('jquery');
 var bootbox = require('bootbox');
+var selectize = require('selectize');
 
 $('.confirm').on("submit", function(e) {
     var currentForm = this;
@@ -77,4 +78,24 @@ $('#currency').on('change', function() {
             $('#exchange_rate').val(data);
         }
     });
+});
+
+// Categories can be created on-the-fly
+$('#category_id').selectize({
+    persist: true,
+    create: function (input, callback) {
+        $.ajax('/api/v1/categories', {
+            data: {
+                name: input,
+                api_token: api_token
+            },
+            method: 'POST',
+            success: function (data) {
+                return callback({
+                    value: data.id,
+                    text: data.name
+                });
+            }
+        });
+    }
 });

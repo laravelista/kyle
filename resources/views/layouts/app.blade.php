@@ -38,10 +38,23 @@
                         </a>
                     </li>
                     @if(Auth::check())
-                    <li class="{{ Ekko::isActiveRoute('services.*') }}">
-                        <a href="{{ route('services.index') }}">
-                            <i class="fa fa-fw fa-ship"></i> Services
+                    <li class="dropdown {{ Ekko::areActiveRoutes(['services.*', 'categories.*']) }}">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                            <i class="fa fa-fw fa-ship"></i> Services <span class="caret"></span>
                         </a>
+
+                        <ul class="dropdown-menu" role="menu">
+                            <li class="{{ Ekko::isActiveRoute('services.index') }}">
+                                <a href="{{ route('services.index') }}">
+                                    Index
+                                </a>
+                            </li>
+                            <li class="{{ Ekko::isActiveRoute('categories.*') }}">
+                                <a href="{{ route('categories.index') }}">
+                                    Categories
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="{{ Ekko::isActiveRoute('clients.*') }}">
                         <a href="{{ route('clients.index') }}">
@@ -60,13 +73,18 @@
                         </li>
                         {{-- <li><a href="{{ url('/register') }}">Register</a></li> --}}
                     @else
+                        <li class="{{ Ekko::isActiveUrl('/report') }}">
+                            <a href="{{ url('/report') }}">
+                                <i class="fa fa-fw fa-line-chart"></i> Report
+                            </a>
+                        </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                                <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i> Logout</a></li>
                             </ul>
                         </li>
                     @endif
