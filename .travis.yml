@@ -10,7 +10,7 @@ install:
   - composer install
 before_script:
   - mysql -e 'create database kyle_test;'
-  - php artisan migrate
+  - php artisan migrate --force
 script:
   - vendor/bin/phpunit
 env:
