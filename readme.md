@@ -3,6 +3,7 @@
 [![Latest Stable Version](https://poser.pugx.org/laravelista/kyle/version?format=flat-square)](https://packagist.org/packages/laravelista/kyle)
 [![Total Downloads](https://poser.pugx.org/laravelista/kyle/downloads?format=flat-square)](https://packagist.org/packages/laravelista/kyle)
 [![License](https://poser.pugx.org/laravelista/kyle/license?format=flat-square)](https://packagist.org/packages/laravelista/kyle)
+[![Build Status](https://travis-ci.org/laravelista/kyle.svg?branch=master)](https://travis-ci.org/laravelista/kyle)
 
 Kyle is a web application for web developers and small companies to efficiently track and stay on top of yearly expenses related to services. We believe that having a calendar with reoccurring meetings or relying on email notifications from service providers is not a trustworthy source of information to bill clients for the services they use. 
 
