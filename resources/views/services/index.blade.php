@@ -1,3 +1,5 @@
+@inject('Service', 'App\Service')
+
 @extends('layouts.app')
 
 @section('meta_title', 'Services - Index')
@@ -22,21 +24,13 @@
             @for($i = 1; $i <= 12; $i++)
                 @if($services->where('month', $i)->count() > 0)
 
-                    <?php
-                        $usd_sum = 0;
-                        foreach($services->where('month', $i) as $service) {
-                            $usd_sum+= ($service->cost / 100) * $service->exchange_rate;
-                        }
-                        $usd_sum = ceil($usd_sum);
-                    ?>
-
-                    <h2>
+                    <h3>
                         {{ date('F', mktime(0, 0, 0, $i)) }}
                         <small>{{ $i }}</small>
                         <small class="pull-right" style="margin-top: 15px;">
-                            TOTAL {{ number_format($usd_sum, 2, ',', '.') }} USD
+                            TOTAL {{ $Service->getSumForMonth($i) }}
                         </small>
-                    </h2>
+                    </h3>
 
                     <div class="table-responsive">
                         <table class="table">

@@ -1,3 +1,5 @@
+@inject('Service', 'App\Service')
+
 @extends('layouts.app')
 
 @section('meta_title', 'Overview')
@@ -16,19 +18,12 @@
     @if(count($occurrences) > 0)
     <div class="row">
         <div class="col-md-12">
-            <?php
-                $usd_sum = 0;
-                foreach($occurrences as $occurrence) {
-                    $usd_sum+= ($occurrence->service->cost / 100) * $occurrence->service->exchange_rate;
-                }
-                $usd_sum = ceil($usd_sum);
-            ?>
-            <h2>
+            <h3>
                 This month
                 <small class="pull-right" style="margin-top: 15px;">
-                    TOTAL {{ number_format($usd_sum, 2, ',', '.') }} USD
+                    TOTAL {{ $Service->getSumForMonth(date('n'), true) }}
                 </small>
-            </h2>
+            </h3>
             <div class="table-responsive">
                 <table class="table">
                     <tr>
@@ -73,19 +68,12 @@
     @if(count($upcomingOccurrences) > 0)
     <div class="row">
         <div class="col-md-12">
-            <?php
-                $usd_sum = 0;
-                foreach($upcomingOccurrences as $occurrence) {
-                    $usd_sum+= ($occurrence->service->cost / 100) * $occurrence->service->exchange_rate;
-                }
-                $usd_sum = ceil($usd_sum);
-            ?>
-            <h2>
+            <h3>
                 Upcoming month
                 <small class="pull-right" style="margin-top: 15px;">
-                    TOTAL {{ number_format($usd_sum, 2, ',', '.') }} USD
+                    TOTAL {{ $Service->getSumForMonth(date('n') + 1, true) }}
                 </small>
-            </h2>
+            </h3>
             <div class="table-responsive">
                 <table class="table">
                     <tr>
