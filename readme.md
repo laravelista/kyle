@@ -4,9 +4,19 @@
 [![Total Downloads](https://poser.pugx.org/laravelista/kyle/downloads?format=flat-square)](https://packagist.org/packages/laravelista/kyle)
 [![License](https://poser.pugx.org/laravelista/kyle/license?format=flat-square)](https://packagist.org/packages/laravelista/kyle)
 
-Kyle is a web application for web developers and small companies to efficiently track and stay on top of future expenses related to web development. We believe that having a calendar with reoccurring meetings or relying on email notifications from service providers is not a trustworthy source of information to bill clients for the services they use. 
+Kyle is a web application for web developers and small companies to efficiently track and stay on top of yearly expenses related to services. We believe that having a calendar with reoccurring meetings or relying on email notifications from service providers is not a trustworthy source of information to bill clients for the services they use. 
 
 Kyle attempts to provide you with a clear and simple way to see which client uses which services and when those service need to be billed. The idea behind Kyle is very simple "Never forget to bill a client for the services that he uses". You can keep track of things like: is the offer sent, did you receive payment and did you send the receipt.
+
+## Features
+
+- Overview of services for current and upcoming month
+- Service breakdown by month
+- Keep track of services that a client uses
+- Group services by custom defined categories
+- Yearly report and statistics
+- Track is the offer sent, payment received and receipt sent
+- Email notifications (Planned)
 
 ## Installation
 
