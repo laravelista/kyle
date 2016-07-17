@@ -14,6 +14,9 @@
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index');
 
+    Route::get('settings', 'SettingsController@edit');
+    Route::put('settings', 'SettingsController@update');
+
     Route::get('report', 'HomeController@report');
 
     Route::resource('clients', 'ClientController');
