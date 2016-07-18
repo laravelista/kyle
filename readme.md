@@ -34,12 +34,35 @@ Install by issuing the Composer `create-project` command in your terminal:
 composer create-project --prefer-dist laravelista/kyle
 ```
 
-### Sample data
+Change values in `.env` file related to `DB_` and `APP_` keys. 
+
+You need to set your database values including: 
+
+- DB_HOST
+- DB_PORT
+- DB_DATABASE
+- DB_USERNAME
+- DB_PASSWORD
+
+Also you need to set application to production env and disable debugging if you are planning on running Kyle on a production server:
+
+- APP_ENV=production
+- APP_DEBUG=false
+
+### Migrate database
+
+Run migrations with:
+
+```
+php artisan migrate
+```
+
+#### Sample data
 
 To populate Kyle with sample data and see how the Overview and Report pages look like, use this command:
 
 ```
-php artisan migrate --seed
+php artisan db:seed
 ```
 
 > Warning! This command will populate the database with a lot of sample data. Use only while testing or if you understand what will happen once this command has triggered.
