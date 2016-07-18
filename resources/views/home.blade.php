@@ -30,6 +30,7 @@
                         <th>Date</th>
                         <th>Service</th>
                         <th>Client</th>
+                        <th>Category</th>
                         <th>Cost</th>
                         <th>Offer sent</th>
                         <th>Payment received</th>
@@ -40,6 +41,7 @@
                             <td>{{ $occurrence->occurs_at->format('d.m.Y') }}</td>
                             <td>{{ $occurrence->service->title }}</td>
                             <td>{{ $occurrence->service->client->name }}</td>
+                            <td>{{ $occurrence->service->category->name or 'n/a' }}</td>
                             <td>{{ $occurrence->service->formatted_cost }}</td>
                             <td class="kyle-change-boolean"
                                 data-url="/api/v1/occurrences/{{ $occurrence->id }}/offer"
@@ -80,6 +82,7 @@
                         <th>Date</th>
                         <th>Service</th>
                         <th>Client</th>
+                        <th>Category</th>
                         <th>Cost</th>
                         <th>Offer sent</th>
                         <th>Payment received</th>
@@ -90,6 +93,7 @@
                             <td>{{ $occurrence->occurs_at->format('d.m.Y') }}</td>
                             <td>{{ $occurrence->service->title }}</td>
                             <td>{{ $occurrence->service->client->name }}</td>
+                            <td>{{ $occurrence->service->category->name or 'n/a' }}</td>
                             <td>{{ $occurrence->service->formatted_cost }}</td>
                             <td class="kyle-change-boolean"
                                 data-url="/api/v1/occurrences/{{ $occurrence->id }}/offer"
