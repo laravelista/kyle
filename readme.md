@@ -12,6 +12,10 @@ Kyle is a web application built with Laravel for web developers and small compan
 
 Kyle attempts to provide you with a clear and simple way to see which client uses which services and when those service need to be billed. The idea behind Kyle is very simple "Never forget to bill a client for the services that he uses".
 
+![Overview](overview.png)
+
+*Names and prices displayed in this image are all fictional and are provided here for demonstration purposes.*
+
 ## Features
 
 - Overview of services for current and upcoming month
