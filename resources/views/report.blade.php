@@ -59,7 +59,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 col-xs-6">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Categories</h3>
@@ -84,7 +84,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-xs-6">
+        <div class="col-md-6">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">Clients</h3>
