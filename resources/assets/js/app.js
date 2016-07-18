@@ -99,3 +99,23 @@ $('#category_id').selectize({
         });
     }
 });
+
+// Categories can be created on-the-fly
+$('#client_id').selectize({
+    persist: true,
+    create: function (input, callback) {
+        $.ajax('/api/v1/clients', {
+            data: {
+                name: input,
+                api_token: api_token
+            },
+            method: 'POST',
+            success: function (data) {
+                return callback({
+                    value: data.id,
+                    text: data.name
+                });
+            }
+        });
+    }
+});
