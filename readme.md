@@ -8,7 +8,7 @@
 [![Build Status](https://travis-ci.org/laravelista/kyle.svg?branch=master)](https://travis-ci.org/laravelista/kyle)
 [![composer.lock available](https://poser.pugx.org/laravelista/kyle/composerlock)](https://packagist.org/packages/laravelista/kyle)
 
-Kyle is a web application for web developers and small companies to efficiently track and stay on top of yearly expenses related to services. We believe that having a calendar with reoccurring meetings or relying on email notifications from service providers is not a trustworthy source of information to bill clients for the services they use. 
+Kyle is a web application built with Laravel for web developers and small companies to efficiently track and stay on top of yearly expenses related to services. We believe that having a calendar with reoccurring meetings or relying on email notifications from service providers is not a trustworthy source of information to bill clients for the services they use. 
 
 Kyle attempts to provide you with a clear and simple way to see which client uses which services and when those service need to be billed. The idea behind Kyle is very simple "Never forget to bill a client for the services that he uses".
 
