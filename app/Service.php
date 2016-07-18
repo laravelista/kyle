@@ -13,6 +13,11 @@ class Service extends Model
 {
     use FormAccessible;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = ['title', 'note', 'month', 'day', 'cost', 'currency', 'active', 'exchange_rate'];
 
     /**
@@ -68,6 +73,16 @@ class Service extends Model
         return number_format($this->cost / 100, 2, ',', '.') . ' ' . strtoupper($this->currency);
     }
 
+    /**
+     * Gets the sum of all services, converted to user's
+     * preferred currency with current exchange rate.
+     *
+     * It is possible to pass a collection of services to this method,
+     * and it will return the sum of that collection.
+     *
+     * @param  Collection|null $services
+     * @return [type]
+     */
     public function getSum(Collection $services = null)
     {
         if(!($services instanceof Collection)) {
@@ -87,6 +102,16 @@ class Service extends Model
         return number_format($sum, 2, ',', '.') . ' ' . $preferredCurrency;
     }
 
+    /**
+     * Gets the sum of all services, converted to user's
+     * preferred currency with current exchange rate for the entered month.
+     *
+     * By default, all services are included (active and non active).
+     *
+     * @param  int $month
+     * @param  boolean $onlyActive
+     * @return [type]
+     */
     public function getSumForMonth(int $month, $onlyActive = false)
     {
         $services = $this->where('month', $month);

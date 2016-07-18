@@ -39,8 +39,8 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'tax_number' => 'required|max:255|unique:clients',
+            'name' => 'required|string|max:255',
+            'tax_number' => 'string|max:255|unique:clients',
             'street' => 'string|max:255',
             'city' => 'string|max:255',
             'postal_code' => 'integer',
@@ -84,8 +84,8 @@ class ClientController extends Controller
         $client = Client::findOrFail($id);
 
         $this->validate($request, [
-            'name' => 'required|max:255',
-            'tax_number' => 'required|max:255|unique:clients,tax_number,' . $client->id,
+            'name' => 'required|string|max:255',
+            'tax_number' => 'string|max:255|unique:clients,tax_number,' . $client->id,
             'street' => 'string|max:255',
             'city' => 'string|max:255',
             'postal_code' => 'integer',

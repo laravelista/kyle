@@ -20,7 +20,8 @@
         "laravelcollective/html": "^5.2",
         "laravelista/ekko": "^1.2",
         "laracasts/flash": "^2.0",
-        "florianv/laravel-swap": "^0.4.0"
+        "florianv/laravel-swap": "^0.4.0",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
