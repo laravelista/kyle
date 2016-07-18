@@ -26,7 +26,7 @@ class DropUniqueIndexForTaxNumberFromClientsTable extends Migration
     public function down()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->unique('tax_number');
+            // $table->unique('tax_number'); // can cause problems when refreshing db.
         });
     }
 }

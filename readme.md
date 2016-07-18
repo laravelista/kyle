@@ -30,6 +30,22 @@ Install by issuing the Composer `create-project` command in your terminal:
 composer create-project --prefer-dist laravelista/kyle
 ```
 
+### Sample data
+
+To populate Kyle with sample data and see how the Overview and Report pages look like, use this command:
+
+```
+php artisan migrate --seed
+```
+
+> Warning! This command will populate the database with a lot of sample data. Use only while testing or if you understand what will happen once this command has triggered.
+
+This will create a sample user with which you can login:
+
+| Email                 | Password |
+|-----------------------|----------|
+| sample@user.dev       | password |
+
 ## Create new user
 
 To create a new user use this command:
