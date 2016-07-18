@@ -1,16 +1,22 @@
 language: php
+
 php:
   - '5.6'
   - '7.0'
   - hhvm
+
 services:
   - mysql
+
 install:
-  - composer install
+  - composer install --prefer-source --no-interaction
+
 before_script:
   - mysql -e 'create database kyle_test;'
   - php artisan migrate --force
+
 script:
   - vendor/bin/phpunit
+
 env:
   - DB_DATABASE=kyle_test DB_USERNAME=root APP_KEY="SdklvfdkJY46KvNmnihYLfspA4xOLeub"
