@@ -108,11 +108,11 @@ class Service extends Model
      *
      * By default, all services are included (active and non active).
      *
-     * @param  int $month
+     * @param  $month
      * @param  boolean $onlyActive
      * @return [type]
      */
-    public function getSumForMonth(int $month, $onlyActive = false)
+    public function getSumForMonth($month, $onlyActive = false)
     {
         $services = $this->where('month', $month);
         if($onlyActive) {
