@@ -22,4 +22,13 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    public function setUp()
+    {
+        parent::setUp();
+
+        // Avoid using external service to fetch quotes
+        $rate = new \Swap\Model\Rate(1);
+        Swap::shouldReceive('quote')->andReturn($rate);
+    }
 }
