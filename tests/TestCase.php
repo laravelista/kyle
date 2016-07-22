@@ -29,6 +29,6 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         // Avoid using external service to fetch quotes
         $rate = new \Swap\Model\Rate(1);
-        Swap::shouldReceive('quote')->andReturn($rate);
+        \Swap::shouldReceive('quote')->andReturn($rate);
     }
 }

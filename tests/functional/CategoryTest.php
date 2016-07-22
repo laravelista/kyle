@@ -1,19 +1,19 @@
-<?php
+<?php namespace Tests\Functional;
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class CategoryTest extends TestCase
+class CategoryTest extends \TestCase
 {
     use DatabaseTransactions;
 
     /** @test */
     public function it_views_all_categories()
     {
-        factory(App\Category::class, 10)->create();
+        factory(\App\Category::class, 10)->create();
 
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $this->actingAs($user)
             ->visit('/categories')
@@ -23,7 +23,7 @@ class CategoryTest extends TestCase
     /** @test */
     public function it_creates_a_new_category()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $name = 'Hosting';
 
@@ -42,9 +42,9 @@ class CategoryTest extends TestCase
     /** @test */
     public function it_updates_an_existing_category()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
-        $category = factory(App\Category::class)->create([
+        $category = factory(\App\Category::class)->create([
             'name' => 'Hostingg'
         ]);
 
@@ -64,9 +64,9 @@ class CategoryTest extends TestCase
     /** @test */
     public function it_deletes_a_category()
     {
-        $category = factory(App\Category::class)->create();
+        $category = factory(\App\Category::class)->create();
 
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $this->actingAs($user)
             ->visit('/categories')

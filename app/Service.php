@@ -51,13 +51,12 @@ class Service extends Model
     }
 
     /**
-     * Converts 112345 to 1.123,45.
+     * Converts 112345 to 1123,45.
      * For forms only.
      *
-     * @param  integer $value
      * @return string
      */
-    public function formCostAttribute($value)
+    public function formCostAttribute()
     {
         return number_format($this->cost / 100, 2, ',', '');
     }

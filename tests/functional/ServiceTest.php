@@ -1,19 +1,19 @@
-<?php
+<?php namespace Tests\Functional;
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ServiceTest extends TestCase
+class ServiceTest extends \TestCase
 {
     use DatabaseTransactions;
 
     /** @test */
     public function it_views_all_services()
     {
-        factory(App\Service::class, 10)->create();
+        factory(\App\Service::class, 10)->create();
 
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $this->actingAs($user)
             ->visit('/services')
@@ -23,10 +23,10 @@ class ServiceTest extends TestCase
     /** @test */
     public function it_creates_a_new_service()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
-        $category = factory(App\Category::class)->create();
-        $client = factory(App\Client::class)->create();
+        $category = factory(\App\Category::class)->create();
+        $client = factory(\App\Client::class)->create();
 
         $title = 'Basic hosting plan';
         $category_id = $category->id;
@@ -62,14 +62,14 @@ class ServiceTest extends TestCase
     /** @test */
     public function it_updates_an_existing_service()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
-        $service = factory(App\Service::class)->create([
+        $service = factory(\App\Service::class)->create([
             'title' => 'Some strange plan'
         ]);
 
-        $category = factory(App\Category::class)->create();
-        $client = factory(App\Client::class)->create();
+        $category = factory(\App\Category::class)->create();
+        $client = factory(\App\Client::class)->create();
 
         $title = 'Basic hosting plan';
         $category_id = $category->id;
@@ -104,9 +104,9 @@ class ServiceTest extends TestCase
     /** @test */
     public function it_deletes_a_service()
     {
-        $service = factory(App\Service::class)->create();
+        $service = factory(\App\Service::class)->create();
 
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $this->actingAs($user)
             ->visit('/services')

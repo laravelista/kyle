@@ -1,19 +1,19 @@
-<?php
+<?php namespace Tests\Functional;
 
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ClientTest extends TestCase
+class ClientTest extends \TestCase
 {
     use DatabaseTransactions;
 
     /** @test */
     public function it_views_all_clients()
     {
-        factory(App\Client::class, 10)->create();
+        factory(\App\Client::class, 10)->create();
 
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $this->actingAs($user)
             ->visit('/clients')
@@ -23,7 +23,7 @@ class ClientTest extends TestCase
     /** @test */
     public function it_creates_a_new_client()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $name = 'Pastor';
         $tax_number = '12345678963';
@@ -50,9 +50,9 @@ class ClientTest extends TestCase
     /** @test */
     public function it_updates_an_existing_client()
     {
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
-        $client = factory(App\Client::class)->create([
+        $client = factory(\App\Client::class)->create([
             'name' => 'Acme building'
         ]);
 
@@ -80,9 +80,9 @@ class ClientTest extends TestCase
     /** @test */
     public function it_deletes_a_client()
     {
-        $client = factory(App\Client::class)->create();
+        $client = factory(\App\Client::class)->create();
 
-        $user = factory(App\User::class)->create();
+        $user = factory(\App\User::class)->create();
 
         $this->actingAs($user)
             ->visit('/clients')

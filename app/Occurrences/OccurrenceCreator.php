@@ -8,6 +8,14 @@ use App\Occurrence;
 
 class OccurrenceCreator
 {
+    /**
+     * Creates a new occurrence that occurs at given date
+     * and associates it with given service.
+     *
+     * @param  Carbon $date
+     * @param  Service $service
+     * @return Occurrence
+     */
     public function create(Carbon $date, Service $service)
     {
         $occurrence = new Occurrence;
@@ -17,6 +25,8 @@ class OccurrenceCreator
         $occurrence->receipt_sent = false;
         $occurrence->service()->associate($service);
         $occurrence->save();
+
+        return $occurrence;
     }
 
 }
