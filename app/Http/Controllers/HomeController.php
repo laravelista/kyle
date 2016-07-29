@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
+use App\Service;
+use App\Category;
+use Carbon\Carbon;
 use App\Occurrence;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use App\Service;
-use App\Client;
-use App\Category;
 
 class HomeController extends Controller
 {
@@ -49,8 +50,19 @@ class HomeController extends Controller
             $upcomingOccurrences = [];
         }
 
+        $previousUnpaidOccurrences = Occurrence::orderBy('occurs_at')
+            // Where occurs_at month and year is the same as upcoming month and current year
+            ->where(function($query) use($currentYear, $currentMonth) {
+                $query->where('occurs_at', '<', Carbon::create($currentYear, $currentMonth, 1));
+            })
+            ->where('payment_received', 0)
+            // Return only occurrences that belong to services that are active
+            ->whereHas('service', function($query) {
+                $query->where('active', 1);
+            })->with(['service.client'])->get();
 
-        return view('home')->with(compact('occurrences', 'upcomingOccurrences'));
+
+        return view('home')->with(compact('occurrences', 'upcomingOccurrences', 'previousUnpaidOccurrences'));
     }
 
     public function report()

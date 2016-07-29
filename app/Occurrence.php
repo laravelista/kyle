@@ -63,4 +63,15 @@ class Occurrence extends Model
     {
         return $this->receipt_sent ? 0 : 1;
     }
+
+    /**
+     * Check if the occurrence is paid.
+     * "Has the payment been received."
+     *
+     * @return boolean
+     */
+    public function isPaid()
+    {
+        return (bool) $this->payment_received;
+    }
 }
