@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">=5.5.9",
+        "php": ">=7.0.0",
         "laravel/framework": "5.2.*",
         "laravelcollective/html": "^5.2",
         "laravelista/ekko": "^1.2",
