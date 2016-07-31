@@ -9,39 +9,40 @@ use App\Http\Controllers\Controller;
 
 class OccurrenceController extends Controller
 {
-    public function toggleOffer($id, Request $request)
+    public function toggleOffer(Occurrence $occurrence, Request $request)
     {
         $this->validate($request, [
             'state' => 'required|boolean'
         ]);
 
-        $occurrence = Occurrence::findOrFail($id);
         $occurrence->offer_sent = $request->get('state');
         $occurrence->save();
 
         return $occurrence->offer_sent;
     }
 
-    public function togglePayment($id, Request $request)
+    public function togglePayment(Occurrence $occurrence, Request $request)
     {
         $this->validate($request, [
             'state' => 'required|boolean'
         ]);
 
-        $occurrence = Occurrence::findOrFail($id);
+        var_dump($occurrence->occurs_at);
+
         $occurrence->payment_received = $request->get('state');
         $occurrence->save();
+
+        var_dump($occurrence->occurs_at);
 
         return $occurrence->payment_received;
     }
 
-    public function toggleReceipt($id, Request $request)
+    public function toggleReceipt(Occurrence $occurrence, Request $request)
     {
         $this->validate($request, [
             'state' => 'required|boolean'
         ]);
 
-        $occurrence = Occurrence::findOrFail($id);
         $occurrence->receipt_sent = $request->get('state');
         $occurrence->save();
 
