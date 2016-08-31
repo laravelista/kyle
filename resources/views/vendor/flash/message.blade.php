@@ -6,7 +6,7 @@
             'body'       => session('flash_notification.message')
         ])
     @else
-        <div style="margin-top: -20px;" class="alert
+        <div style="margin-top: -23px;" class="alert
                     alert-{{ session('flash_notification.level') }}
                     {{ session()->has('flash_notification.important') ? 'alert-important' : '' }}"
         >
