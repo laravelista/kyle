@@ -18,12 +18,14 @@
 
     @include('partials._occurrences_table', [
         'title' => 'This Month',
-        'occurrences' => $occurrencesThisMonth
+        'occurrences' => $occurrencesThisMonth,
+        'month' => date('n')
     ])
 
     @include('partials._occurrences_table', [
         'title' => 'Upcoming Month',
-        'occurrences' => $occurrencesNextMonth
+        'occurrences' => $occurrencesNextMonth,
+        'month' => date('n') + 1
     ])
 
     @include('partials._occurrences_table', [

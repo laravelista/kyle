@@ -2,9 +2,11 @@
     <div class="row">
         <div class="col-md-12">
             <h3>
-                {{ $title or 'Upcoming month' }}
+                {{ $title }}
                 <small class="pull-right" style="margin-top: 15px;">
-                    TOTAL {{ $Service->getSumForMonth(date('n') + 1, true) }}
+                @if(isset($month))
+                    TOTAL {{ $Service->getSumForMonth($month, true) }}
+                @endif
                 </small>
             </h3>
             <div class="table-responsive">

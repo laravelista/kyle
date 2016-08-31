@@ -17298,7 +17298,7 @@ $('#category_id').selectize({
     }
 });
 
-// Categories can be created on-the-fly
+// Clients can be created on-the-fly
 $('#client_id').selectize({
     persist: true,
     create: function create(input, callback) {
