@@ -8,7 +8,7 @@
 [![Build Status](https://travis-ci.org/laravelista/kyle.svg?branch=master)](https://travis-ci.org/laravelista/kyle)
 [![composer.lock available](https://poser.pugx.org/laravelista/kyle/composerlock)](https://packagist.org/packages/laravelista/kyle)
 
-Kyle is a web application built with Laravel for web developers and small companies to efficiently track and stay on top of yearly expenses related to services. We believe that having a calendar with reoccurring meetings or relying on email notifications from service providers is not a trustworthy source of information to bill clients for the services they use. 
+Kyle is a web application built with Laravel for web developers and small companies to efficiently track and stay on top of yearly expenses related to services. We believe that having a calendar with reoccurring meetings or relying on email notifications from service providers is not a trustworthy source of information to bill clients for the services they use.
 
 Kyle attempts to provide you with a clear and simple way to see which client uses which services and when those service need to be billed. The idea behind Kyle is very simple "Never forget to bill a client for the services that he uses".
 
@@ -34,9 +34,9 @@ Install by issuing the Composer `create-project` command in your terminal:
 composer create-project --prefer-dist laravelista/kyle
 ```
 
-Change values in `.env` file related to `DB_` and `APP_` keys. 
+Change values in `.env` file related to `DB_` and `APP_` keys.
 
-You need to set your database values including: 
+You need to set your database values including:
 
 - DB_HOST
 - DB_PORT
@@ -85,7 +85,7 @@ You will be asked for the password.
 
 ## Info
 
-At the start of every year 1st of January a command `occurrences:spawn` is executed using the task scheduler. 
+At the start of every year 1st of January a command `occurrences:spawn` is executed using the task scheduler.
 
 Be sure to add Cron entry to your server:
 
@@ -94,7 +94,3 @@ Be sure to add Cron entry to your server:
 ```
 
 This command creates new occurrences for services that will occur in the new year.
-
-## License
-
-Kyle is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT)
