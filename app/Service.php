@@ -92,7 +92,7 @@ class Service extends Model
         $sum = 0;
         foreach($services as $service) {
             $currentCurrency = strtoupper($service->currency);
-            $exchange_rate = \Swap::quote("{$currentCurrency}/{$preferredCurrency}")
+            $exchange_rate = \Swap::latest("{$currentCurrency}/{$preferredCurrency}")
                 ->getValue();
             $sum+= ($service->cost / 100) * $exchange_rate;
         }
