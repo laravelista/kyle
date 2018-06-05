@@ -87,18 +87,14 @@ class Service extends Model
         if(!($services instanceof Collection)) {
             $services = $this->all();
         }
-        $preferredCurrency = strtoupper(auth()->user()->preferred_currency);
 
         $sum = 0;
         foreach($services as $service) {
             $currentCurrency = strtoupper($service->currency);
-            $exchange_rate = \Swap::latest("{$currentCurrency}/{$preferredCurrency}")
-                ->getValue();
-            $sum+= ($service->cost / 100) * $exchange_rate;
+            $sum+= ($service->cost / 100);
         }
-        //$sum = ceil($sum);
 
-        return number_format($sum, 2, ',', '.') . ' ' . $preferredCurrency;
+        return number_format($sum, 2, ',', '.') . ' ' . $currentCurrency;
     }
 
     /**
